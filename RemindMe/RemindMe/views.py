@@ -11,7 +11,7 @@ from .utils import send_sms_via_msg91
 
 @login_required(login_url='/loginn')
 def home(request):
-    return render(request, 'signup.html')
+    return redirect('/remindpage')
 
 def signup(request):
     if request.method == 'POST':
@@ -30,7 +30,7 @@ def loginn(request):
         userr = authenticate(request, username=fnm, password=pwd)
         if userr is not None:
             login(request, userr)
-            return redirect('/remindpage')
+            return redirect('remind')
         else:
             return redirect('/loginn')
     return render(request, 'loginn.html')
