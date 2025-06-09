@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Edit Todo</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+</head>
+
+<body>
+    <div class="signup-login">
+        <div class="signup-box scr">
+            <div class="heading">Edit Task</div>
+            <form method="post">
+                {% csrf_token %}
+                
+                <input type="text" name="title" required placeholder="Task title" value="{{ obj.title }}">
+
+                <textarea name="message" required placeholder="Enter your message">{{ obj.message }}</textarea>
+
+                <input type="date" name="date" required value="{{ obj.date|date:'Y-m-d' }}">
+
+                <input type="time" name="time" required value="{{ obj.time|time:'H:i' }}">
+
+                <label>
+                    <input type="radio" name="send_via" value="sms" {% if obj.send_via == 'sms' %}checked{% endif %}> SMS
+                </label>
+                <label>
+                    <input type="radio" name="send_via" value="email" {% if obj.send_via == 'email' %}checked{% endif %}> Email
+                </label>
+
+                <input class="submit-button" type="submit" value="Update Task">
+            </form>
+
+            <a href="{% url 'todo' %}">Back to Todo List</a>
+        </div>
+    </div>
+</body>
+
+</html>

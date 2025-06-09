@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Todo</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <script src="https://kit.fontawesome.com/cb792c0850.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="signup-login">
+    <div class="signup-box scr">
+        <div class="box-header">
+            <h1 class="greeting">Hello {{ user.username }}</h1>
+            <a href="{% url 'signout' %}" class="signout-link">Sign Out</a>
+        </div>
+
+        <div class="heading">Add New Task</div>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="title" class="inp" required placeholder="Title">
+            <textarea name="message" required placeholder="Enter your message"></textarea>
+            <input type="date" name="date" required>
+            <input type="time" name="time" required>
+
+            <div class="send-method">
+                <label><input type="radio" name="send_via" value="sms" required> SMS</label>
+                <label><input type="radio" name="send_via" value="email"> Email</label>
+            </div>
+
+            <input class="submit-button" type="submit" value="Add Task">
+        </form>
+
+        <hr class="line">
+
+        <div class="heading">Your Tasks</div>
+
+        {% for todo in res %}
+        <div class="Todo {% if todo.status %}todo-green{% else %}todo-red{% endif %}">
+            <h5>{{ todo.srno }}</h5>
+            <p><strong>Title:</strong> {{ todo.title }}</p>
+            <p><strong>Message:</strong> {{ todo.message }}</p>
+            <p><strong>Date:</strong> {{ todo.date }}</p>
+            <p><strong>Time:</strong> {{ todo.time }}</p>
+            <p><strong>Send Via:</strong> {{ todo.send_via|upper }}</p>
+
+            <div>
+                <a href="{% url 'edit_todo' todo.srno %}" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="{% url 'delete_todo' todo.srno %}" title="Delete"><i class="fa-solid fa-trash"></i></a>
+            </div>
+        </div>
+        {% empty %}
+        <p>No tasks yet. Add one above!</p>
+        {% endfor %}
+    </div>
+</div>
+
+</body>
+
+</html>

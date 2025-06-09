@@ -1,0 +1,109 @@
+.App {
+  text-align: center;
+}
+
+h1 {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.TodoWrapper {
+  background-color: #252525;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+.todo-input {
+  outline: none;
+  background: none;
+  border: 1px solid #8758ff;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.todo-input::placeholder {
+  color: #ffffff4d;
+}
+
+.todo-btn {
+  background: #8758ff;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.todo-btn:hover {
+  box-shadow: 0 0 10px #8758ff;
+}
+
+.Todo {
+  display: flex;
+  flex-direction: column;
+  background: #ffff00a9;
+  color: #000;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  position: relative;
+}
+
+.Todo p {
+  margin: 4px 0;
+}
+
+.Todo h5 {
+  margin: 0;
+  font-weight: bold;
+}
+
+.Todo a {
+  color: #000;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.Todo a:hover {
+  color: red;
+}
+
+.completed {
+  color: #c5aeff;
+  text-decoration: line-through;
+}
+
+.todo-green {
+  background-color: rgba(0, 128, 0, 0.7);
+}
+
+.todo-red {
+  background-color: rgba(255, 0, 0, 0.7);
+}
+
+.scr {
+  overflow-y: auto;
+}
+
+.scr::-webkit-scrollbar {
+  width: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 10px 0;
+  display: inline-block;
+}
